@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Contracts</title>
+    <link rel="stylesheet" th:href="@{/css/page.css}"/>
+    <link rel="stylesheet" th:href="@{/css/table.css}"/>
+</head>
+<body>
+<div class="menu-container">
+    <div class="menu">
+        <h1>Contracts</h1>
+        <div class="table-container" th:switch="${storages}">
+            <h1 th:case="null">No contracts found!</h1>
+            <div th:case="*">
+                <table class="entityTable">
+                    <thead>
+                    <tr>
+                        <th>Cell ID</th>
+                        <th>Good</th>
+                        <th>Supplier</th>
+                        <th>SKU amount</th>
+                        <th>Cell capacity</th>
+                        <th>Replenishment date</th>
+
+<!--                        <th>Edit</th>-->
+<!--                        <th>Delete</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="contract : ${storages}">
+                        <td th:text="${storages.id}"></td>
+                        <td th:text="${storages.id}"></td>
+                        <td th:text="${storages.id}"></td>
+                        <td th:text="${storages.id}"></td>
+                        <td th:text="${storages.id}"></td>
+                        <td th:text="${storages.id}"></td>
+<!--                        <td><a th:href="@{contract-update/{id}(id=${contract.id})}">Edit</a></td>-->
+<!--                        <td><a th:href="@{contract-delete/{id}(id=${contract.id})}">Delete</a></td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <a class="button-container" href="/contracts/contract-create"><input type="button" value="Create contract"></a>
+        <a class="button-container" href="/"><input type="button" value="Back"></a>
+    </div>
+</div>
+</body>
+</html>
