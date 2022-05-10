@@ -17,6 +17,6 @@ public class Good {
     @Column(name = "good_name")
     private String name;
 
-    @OneToMany(mappedBy = "good_id")
-    Set<Catalogue> catalogue;
+    @OneToMany(mappedBy = "good")
+    private Set<Catalogue> catalogue;
 }

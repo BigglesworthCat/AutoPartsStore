@@ -23,7 +23,7 @@ public class CustomersOrdersController {
         this.customerOrderService = customerOrderService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/customers_orders_menu")
     public String customersOrdersMenu(Model model) {
         return "customers_orders/customers_orders_menu";
     }

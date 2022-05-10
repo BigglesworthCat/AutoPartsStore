@@ -23,7 +23,7 @@ public class CatalogueController {
         this.catalogueService = catalogueService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/catalogue_menu")
     public String catalogueMenu(Model model) {
         return "catalogue/catalogue_menu";
     }

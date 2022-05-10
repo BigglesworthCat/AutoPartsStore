@@ -17,6 +17,6 @@ public class StoreOrderStatus {
     @Column(name = "store_order_status_name")
     private String name;
 
-    @OneToMany(mappedBy = "store_order_status_id")
-    Set<StoreOrder> storeOrder;
+    @OneToMany(mappedBy = "storeOrderStatus")
+    private Set<StoreOrder> storeOrder;
 }

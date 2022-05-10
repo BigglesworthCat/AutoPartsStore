@@ -23,15 +23,15 @@ public class StoreOrdersController {
         this.storeOrderService = storeOrderService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/store_orders_menu")
     public String menu(Model model) {
         return "store_orders/store_orders_menu";
     }
 
-    @GetMapping("/storage_list")
+    @GetMapping("/store_orders_list")
     public String findAll(Model model) {
         List<StoreOrder> storeOrders = storeOrderService.findAll();
         model.addAttribute("storeOrders", storeOrders);
-        return "storage/storage_list";
+        return "store_orders/store_orders_list";
     }
 }

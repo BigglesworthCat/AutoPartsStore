@@ -32,12 +32,12 @@ public class Catalogue {
     @Column(name = "store_price")
     private Integer storePrice;
 
-    @OneToMany(mappedBy = "sku_id")
-    Set<CustomerOrder> customerOrder;
+    @OneToMany(mappedBy = "catalogue")
+    private Set<CustomerOrder> customerOrder;
 
-    @OneToMany(mappedBy = "sku_id")
-    Set<StoreOrder> storeOrder;
+    @OneToMany(mappedBy = "catalogue")
+    private Set<StoreOrder> storeOrder;
 
-    @OneToMany(mappedBy = "sku_id")
-    Set<Storage> storage;
+    @OneToMany(mappedBy = "catalogue")
+    private Set<Storage> storage;
 }

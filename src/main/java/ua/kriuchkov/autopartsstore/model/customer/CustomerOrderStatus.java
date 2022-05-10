@@ -18,6 +18,6 @@ public class CustomerOrderStatus {
     @Column(name = "customer_order_status_name")
     private String name;
 
-    @OneToMany(mappedBy = "customer_order_status_id")
-    Set<CustomerOrder> customerOrder;
+    @OneToMany(mappedBy = "customerOrderStatus")
+    private Set<CustomerOrder> customerOrder;
 }

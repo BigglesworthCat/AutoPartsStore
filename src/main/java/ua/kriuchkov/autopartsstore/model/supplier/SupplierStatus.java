@@ -18,6 +18,6 @@ public class SupplierStatus {
     @Column(name = "supplier_status_name")
     private String name;
 
-    @OneToMany(mappedBy = "status_id")
+    @OneToMany(mappedBy = "statusId")
     Set<Supplier> suppliers;
 }

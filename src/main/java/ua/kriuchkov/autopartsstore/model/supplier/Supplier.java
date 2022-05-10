@@ -24,8 +24,8 @@ public class Supplier {
 
     @ManyToOne
     @JoinColumn(name = "supplier_status_id")
-    private SupplierCategory status_id;
+    private SupplierCategory statusId;
 
-    @OneToMany(mappedBy = "good_id")
+    @OneToMany(mappedBy = "supplier")
     Set<Catalogue> catalogue;
 }
