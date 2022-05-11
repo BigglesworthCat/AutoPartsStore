@@ -30,7 +30,7 @@ public class Supplier {
     @EqualsAndHashCode.Exclude
     @ManyToOne
     @JoinColumn(name = "supplier_status_id")
-    private SupplierCategory statusId;
+    private SupplierStatus supplierStatus;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

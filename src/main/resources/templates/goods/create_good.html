@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create good</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}"/>
+</head>
+<body>
+<div class="form-container">
+    <form action="#" th:action="@{/goods/create_good}" th:object="${good}" method="post">
+        <legend>Create good</legend>
+
+        <div class="input-container">
+            <input type="text" th:field="*{name}" id="name">
+            <label for="name">Good name</label>
+        </div>
+
+        <div class="button-holder">
+            <a href="/goods/goods_list"><input type="button" value="Back"></a>
+            <input type="reset" id="reset" value="Reset">
+            <input type="submit" id="submit" value="Submit">
+        </div>
+    </form>
+</div>
+<script th:src="@{/js/form.js}"></script>
+</body>
+</html>
