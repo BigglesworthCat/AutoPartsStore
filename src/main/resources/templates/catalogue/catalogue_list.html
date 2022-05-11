@@ -23,27 +23,27 @@
                         <th>Supplier price</th>
                         <th>Store price</th>
                         <th>Delivery days</th>
-<!--                        <th>Edit</th>-->
-<!--                        <th>Delete</th>-->
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="catalogue : ${catalogues}">
-                        <td th:text="${catalogue.id}"></td>
-                        <td th:text="${catalogue.good.name}"></td>
-                        <td th:text="${catalogue.supplier.name}"></td>
-                        <td th:text="${catalogue.supplier.supplierCategory.name}"></td>
-                        <td th:text="${catalogue.supplierPrice}"></td>
-                        <td th:text="${catalogue.storePrice}"></td>
-                        <td th:text="${catalogue.deliveryDays}"></td>
-<!--                        <td><a th:href="@{contract-update/{id}(id=${contract.id})}">Edit</a></td>-->
-<!--                        <td><a th:href="@{contract-delete/{id}(id=${contract.id})}">Delete</a></td>-->
+                    <tr th:each="sku : ${catalogues}">
+                        <td th:text="${sku.id}"></td>
+                        <td th:text="${sku.good.name}"></td>
+                        <td th:text="${sku.supplier.name}"></td>
+                        <td th:text="${sku.supplier.supplierCategory.name}"></td>
+                        <td th:text="${sku.supplierPrice}"></td>
+                        <td th:text="${sku.storePrice}"></td>
+                        <td th:text="${sku.deliveryDays}"></td>
+                        <td><a th:href="@{update_sku/{id}(id=${sku.id})}">Edit</a></td>
+                        <td><a th:href="@{delete_sku/{id}(id=${sku.id})}">Delete</a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-<!--        <a class="button-container" href="/contracts/contract-create"><input type="button" value="Create SKU"></a>-->
+        <a class="button-container" href="/catalogue/create_sku"><input type="button" value="Create SKU"></a>
         <a class="button-container" href="/catalogue/catalogue_menu"><input type="button" value="Back"></a>
     </div>
 </div>

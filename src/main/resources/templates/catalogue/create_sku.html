@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create SKU</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}"/>
+</head>
+<body>
+<div class="form-container">
+    <form action="#" th:action="@{/catalogue/create_sku}" th:object="${catalogue}" method="post">
+        <legend>Create SKU</legend>
+
+        <div class="input-container">
+            <select th:field="*{good}" id="good">
+                <option th:each="good : ${goods}" th:value="${good.id}"
+                        th:text="${good.name}"></option>
+            </select>
+            <label for="good">Good</label>
+        </div>
+
+        <div class="input-container">
+            <select th:field="*{supplier}" id="supplier">
+                <option th:each="supplier : ${suppliers}" th:value="${supplier.id}"
+                        th:text="${supplier.name}"></option>
+            </select>
+            <label for="supplier">Supplier</label>
+        </div>
+
+        <div class="input-container">
+            <input type="number" th:field="*{supplierPrice}" id="supplierPrice">
+            <label for="supplierPrice">Supplier price</label>
+        </div>
+
+        <div class="input-container">
+            <input type="number" th:field="*{storePrice}" id="storePrice">
+            <label for="storePrice">Store price</label>
+        </div>
+
+        <div class="input-container">
+            <input type="number" th:field="*{deliveryDays}" id="deliveryDays">
+            <label for="deliveryDays">Delivery days</label>
+        </div>
+
+        <div class="button-holder">
+            <a href="/catalogue/catalogue_list"><input type="button" value="Back"></a>
+            <input type="reset" id="reset" value="Reset">
+            <input type="submit" id="submit" value="Submit">
+        </div>
+    </form>
+</div>
+<script th:src="@{/js/form.js}"></script>
+</body>
+</html>

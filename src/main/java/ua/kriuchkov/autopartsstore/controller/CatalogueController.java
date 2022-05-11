@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.kriuchkov.autopartsstore.model.Catalogue;
+import ua.kriuchkov.autopartsstore.model.Good;
+import ua.kriuchkov.autopartsstore.model.supplier.Supplier;
 import ua.kriuchkov.autopartsstore.service.CatalogueService;
+import ua.kriuchkov.autopartsstore.service.GoodService;
+import ua.kriuchkov.autopartsstore.service.supplier.SupplierService;
 
 import java.util.List;
 
@@ -17,10 +21,14 @@ import java.util.List;
 @RequestMapping("/catalogue")
 public class CatalogueController {
     public final CatalogueService catalogueService;
+    public final GoodService goodService;
+    public final SupplierService supplierService;
 
     @Autowired
-    public CatalogueController(CatalogueService catalogueService) {
+    public CatalogueController(CatalogueService catalogueService, GoodService goodService, SupplierService supplierService) {
         this.catalogueService = catalogueService;
+        this.goodService = goodService;
+        this.supplierService = supplierService;
     }
 
     @GetMapping("/catalogue_menu")
@@ -33,5 +41,43 @@ public class CatalogueController {
         List<Catalogue> catalogues = catalogueService.findAll();
         model.addAttribute("catalogues", catalogues);
         return "catalogue/catalogue_list";
+    }
+
+    @GetMapping("/create_sku")
+    public String createSKUForm(Model model, Catalogue catalogue) {
+        List<Good> goods = goodService.findAll();
+        List<Supplier> suppliers = supplierService.findAll();
+        model.addAttribute("goods", goods);
+        model.addAttribute("suppliers", suppliers);
+        return "catalogue/create_sku";
+    }
+
+    @PostMapping("/create_sku")
+    public String createSKU(Catalogue catalogue) {
+        catalogueService.saveCatalogue(catalogue);
+        return "redirect:/catalogue/catalogue_list";
+    }
+
+    @GetMapping("/update_sku/{id}")
+    public String updateSKUForm(@PathVariable("id") Integer id, Model model) {
+        Catalogue catalogue = catalogueService.findById(id);
+        model.addAttribute("catalogue", catalogue);
+        List<Good> goods = goodService.findAll();
+        List<Supplier> suppliers = supplierService.findAll();
+        model.addAttribute("goods", goods);
+        model.addAttribute("suppliers", suppliers);
+        return "catalogue/update_sku";
+    }
+
+    @PostMapping("/update_sku")
+    public String updateSKU(Catalogue catalogue) {
+        catalogueService.saveCatalogue(catalogue);
+        return "redirect:/catalogue/catalogue_list";
+    }
+
+    @GetMapping("delete_sku/{id}")
+    public String deleteSKU(@PathVariable("id") Integer id) {
+        catalogueService.deleteById(id);
+        return "redirect:/catalogue/catalogue_list";
     }
 }
