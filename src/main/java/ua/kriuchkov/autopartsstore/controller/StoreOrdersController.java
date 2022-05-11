@@ -1,15 +1,23 @@
 package ua.kriuchkov.autopartsstore.controller;
 
+import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ua.kriuchkov.autopartsstore.model.Catalogue;
+import ua.kriuchkov.autopartsstore.model.Good;
 import ua.kriuchkov.autopartsstore.model.storage.Storage;
 import ua.kriuchkov.autopartsstore.model.store.StoreOrder;
+import ua.kriuchkov.autopartsstore.model.store.StoreOrderStatus;
+import ua.kriuchkov.autopartsstore.model.supplier.Supplier;
 import ua.kriuchkov.autopartsstore.repository.store.StoreOrderRepository;
 import ua.kriuchkov.autopartsstore.service.CatalogueService;
 import ua.kriuchkov.autopartsstore.service.store.StoreOrderService;
+import ua.kriuchkov.autopartsstore.service.store.StoreOrderStatusService;
 
 import java.util.List;
 
@@ -17,15 +25,14 @@ import java.util.List;
 @RequestMapping("/store_orders")
 public class StoreOrdersController {
     public final StoreOrderService storeOrderService;
+    public final CatalogueService catalogueService;
+    public final StoreOrderStatusService storeOrderStatusService;
 
     @Autowired
-    public StoreOrdersController(StoreOrderService storeOrderService) {
+    public StoreOrdersController(StoreOrderService storeOrderService, CatalogueService catalogueService, StoreOrderStatusService storeOrderStatusService) {
         this.storeOrderService = storeOrderService;
-    }
-
-    @GetMapping("/store_orders_menu")
-    public String menu(Model model) {
-        return "store_orders/store_orders_menu";
+        this.catalogueService = catalogueService;
+        this.storeOrderStatusService = storeOrderStatusService;
     }
 
     @GetMapping("/store_orders_list")
@@ -33,5 +40,43 @@ public class StoreOrdersController {
         List<StoreOrder> storeOrders = storeOrderService.findAll();
         model.addAttribute("storeOrders", storeOrders);
         return "store_orders/store_orders_list";
+    }
+
+    @GetMapping("/create_store_order")
+    public String createStoreOrderForm(Model model, StoreOrder storeOrder) {
+        List<Catalogue> catalogues = catalogueService.findAll();
+        model.addAttribute("catalogues", catalogues);
+        return "store_orders/create_store_order";
+    }
+
+    @PostMapping("/create_store_order")
+    public String createStoreOrder(StoreOrder storeOrder) {
+        storeOrderService.saveStoreOrder(storeOrder);
+        return "redirect:/store_orders/store_orders_list";
+    }
+
+    @GetMapping("/update_store_order/{id}")
+    public String updateStoreOrderForm(@PathVariable("id") Integer id, Model model) {
+        StoreOrder storeOrder = storeOrderService.findById(id);
+        model.addAttribute("storeOrder", storeOrder);
+        List<Catalogue> catalogues = catalogueService.findAll();
+        List<StoreOrderStatus> storeOrderStatuses = storeOrderStatusService.findAll();
+        model.addAttribute("catalogues", catalogues);
+        model.addAttribute("storeOrderStatuses", storeOrderStatuses);
+        return "store_orders/update_store_order";
+    }
+
+    @PostMapping("/update_store_order")
+    public String updateStoreOrder(StoreOrder storeOrder) {
+        StoreOrder upd = (storeOrderService.findById(storeOrder.getId()));
+        upd.setStoreOrderStatus(storeOrder.getStoreOrderStatus());
+        storeOrderService.saveStoreOrder(upd);
+        return "redirect:/store_orders/store_orders_list";
+    }
+
+    @GetMapping("delete_store_order/{id}")
+    public String deleteStoreOrder(@PathVariable("id") Integer id) {
+        storeOrderService.deleteById(id);
+        return "redirect:/store_orders/store_orders_list";
     }
 }

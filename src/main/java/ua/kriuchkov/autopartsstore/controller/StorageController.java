@@ -20,11 +20,6 @@ public class StorageController {
         this.storageService = storageService;
     }
 
-    @GetMapping("/storage_menu")
-    public String menu(Model model) {
-        return "storage/storage_menu";
-    }
-
     @GetMapping("/storage_list")
     public String findAll(Model model) {
         List<Storage> storages = storageService.findAll();

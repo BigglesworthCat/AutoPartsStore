@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update customer order</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}"/>
+</head>
+<body>
+<div class="form-container">
+    <form action="#" th:action="@{/customers_orders/update_customer_order}" th:object="${customerOrder}" method="post">
+        <legend>Update customer order</legend>
+
+        <div class="input-container">
+            <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+            <label for="id">ID</label>
+        </div>
+
+        <div class="input-container">
+            <input readonly type="number" th:field="*{skuAmount}" id="skuAmount" placeholder="skuAmount">
+            <label for="skuAmount">SKU amount</label>
+        </div>
+
+        <div class="input-container">
+            <input type="number" th:field="*{defectedSkuAmount}" id="defectedSkuAmount" placeholder="defectedSkuAmount">
+            <label for="defectedSkuAmount">Defected SKU amount</label>
+        </div>
+
+        <div class="input-container">
+            <select th:field="*{customerOrderStatus}" id="customerOrderStatus">
+                <option th:each="status : ${customerOrderStatuses}" th:value="${status.id}"
+                        th:text="${status.name}"></option>
+            </select>
+            <label for="customerOrderStatus">Status</label>
+        </div>
+
+        <div class="button-holder">
+            <a href="/customers_orders/customers_orders_list"><input type="button" value="Back"></a>
+            <input type="reset" id="reset" value="Reset">
+            <input type="submit" id="submit" value="Submit">
+        </div>
+    </form>
+</div>
+<script th:src="@{/js/form.js}"></script>
+</body>
+</html>

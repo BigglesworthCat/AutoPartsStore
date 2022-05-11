@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Create customer order</title>
+  <link rel="stylesheet" th:href="@{/css/form.css}"/>
+</head>
+<body>
+<div class="form-container">
+  <form action="#" th:action="@{/customers_orders/create_customer_order}" th:object="${customerOrder}" method="post">
+    <legend>Create customer order</legend>
+
+    <div class="input-container">
+      <select th:field="*{catalogue}" id="catalogue">
+        <option th:each="sku : ${catalogues}" th:value="${sku.id}"
+                th:text="${sku.good.name + ' ' + sku.supplier.name + ' ' + sku.storePrice}"></option>
+      </select>
+      <label for="catalogue">SKU</label>
+    </div>
+
+    <div class="input-container">
+      <input type="number" th:field="*{skuAmount}" id="skuAmount">
+      <label for="skuAmount">SKU amount</label>
+    </div>
+
+    <div class="button-holder">
+      <a href="/customers_orders/customers_orders_list"><input type="button" value="Back"></a>
+      <input type="reset" id="reset" value="Reset">
+      <input type="submit" id="submit" value="Submit">
+    </div>
+  </form>
+</div>
+<script th:src="@{/js/form.js}"></script>
+</body>
+</html>

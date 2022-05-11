@@ -22,8 +22,8 @@
                         <th>SKU amount</th>
                         <th>Order status</th>
                         <th>Order date</th>
-                        <!--                        <th>Edit</th>-->
-                        <!--                        <th>Delete</th>-->
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,15 +34,16 @@
                         <td th:text="${storeOrder.skuAmount}"></td>
                         <td th:text="${storeOrder.storeOrderStatus.name}"></td>
                         <td th:text="${storeOrder.date}"></td>
-                        <!--                        <td><a th:href="@{contract-update/{id}(id=${contract.id})}">Edit</a></td>-->
-                        <!--                        <td><a th:href="@{contract-delete/{id}(id=${contract.id})}">Delete</a></td>-->
+                        <td><a th:href="@{update_store_order/{id}(id=${storeOrder.id})}">Edit</a></td>
+                        <td><a th:href="@{delete_store_order/{id}(id=${storeOrder.id})}">Delete</a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-<!--        <a class="button-container" href="/contracts/contract-create"><input type="button" value="Create store order"></a>-->
-        <a class="button-container" href="/storage/storage_menu"><input type="button" value="Back"></a>
+        <a class="button-container" href="/store_orders/create_store_order"><input type="button"
+                                                                                   value="Create order"></a>
+        <a class="button-container" href="/"><input type="button" value="Back"></a>
     </div>
 </div>
 </body>
