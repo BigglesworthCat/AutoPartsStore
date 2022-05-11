@@ -1,6 +1,8 @@
 package ua.kriuchkov.autopartsstore.model.supplier;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import ua.kriuchkov.autopartsstore.model.supplier.Supplier;
 
 import javax.persistence.*;
@@ -18,6 +20,8 @@ public class SupplierCategory {
     @Column(name = "supplier_category_name")
     private String name;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "supplierCategory")
-    Set<Supplier> suppliers;
+    private Set<Supplier> suppliers;
 }

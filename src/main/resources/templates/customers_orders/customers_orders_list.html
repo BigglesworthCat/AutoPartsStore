@@ -9,9 +9,9 @@
 <body>
 <div class="menu-container">
     <div class="menu">
-        <h1>Contracts</h1>
-        <div class="table-container" th:switch="${contracts}">
-            <h1 th:case="null">No contracts found!</h1>
+        <h1>Customer's orders</h1>
+        <div class="table-container" th:switch="${customerOrders}">
+            <h1 th:case="null">No orders found!</h1>
             <div th:case="*">
                 <table class="entityTable">
                     <thead>
@@ -23,20 +23,19 @@
                         <th>Defected SKU amount</th>
                         <th>Order status</th>
                         <th>Order date</th>
-
 <!--                        <th>Edit</th>-->
 <!--                        <th>Delete</th>-->
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="contract : ${customerOrders}">
-                        <td th:text="${customerOrders.id}"></td>
-                        <td th:text="${customerOrders.id}"></td>
-                        <td th:text="${customerOrders.id}"></td>
-                        <td th:text="${customerOrders.id}"></td>
-                        <td th:text="${customerOrders.id}"></td>
-                        <td th:text="${customerOrders.id}"></td>
-                        <td th:text="${customerOrders.id}"></td>
+                    <tr th:each="customerOrder : ${customerOrders}">
+                        <td th:text="${customerOrder.id}"></td>
+                        <td th:text="${customerOrder.catalogue.good.name}"></td>
+                        <td th:text="${customerOrder.catalogue.supplier.name}"></td>
+                        <td th:text="${customerOrder.skuAmount}"></td>
+                        <td th:text="${customerOrder.defectedSkuAmount}"></td>
+                        <td th:text="${customerOrder.customerOrderStatus.name}"></td>
+                        <td th:text="${customerOrder.date}"></td>
 
 <!--                        <td><a th:href="@{contract-update/{id}(id=${contract.id})}">Edit</a></td>-->
 <!--                        <td><a th:href="@{contract-delete/{id}(id=${contract.id})}">Delete</a></td>-->
@@ -45,8 +44,8 @@
                 </table>
             </div>
         </div>
-        <a class="button-container" href="/contracts/contract-create"><input type="button" value="Create contract"></a>
-        <a class="button-container" href="/"><input type="button" value="Back"></a>
+<!--        <a class="button-container" href="/contracts/contract-create"><input type="button" value="Create customer order"></a>-->
+        <a class="button-container" href="/customers_orders/customers_orders_menu"><input type="button" value="Back"></a>
     </div>
 </div>
 </body>

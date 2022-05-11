@@ -1,6 +1,8 @@
 package ua.kriuchkov.autopartsstore.model.store;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import ua.kriuchkov.autopartsstore.model.Catalogue;
 import ua.kriuchkov.autopartsstore.model.customer.CustomerOrderStatus;
 
@@ -16,6 +18,8 @@ public class StoreOrder {
     @Column(name = "store_order_id")
     private Integer id;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne
     @JoinColumn(name = "sku_id")
     private Catalogue catalogue;
@@ -23,6 +27,8 @@ public class StoreOrder {
     @Column(name = "sku_amount")
     private Integer skuAmount;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne
     @JoinColumn(name = "store_order_status_id")
     private StoreOrderStatus storeOrderStatus;

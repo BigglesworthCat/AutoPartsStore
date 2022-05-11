@@ -1,6 +1,8 @@
 package ua.kriuchkov.autopartsstore.model.store;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -17,6 +19,8 @@ public class StoreOrderStatus {
     @Column(name = "store_order_status_name")
     private String name;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "storeOrderStatus")
     private Set<StoreOrder> storeOrder;
 }

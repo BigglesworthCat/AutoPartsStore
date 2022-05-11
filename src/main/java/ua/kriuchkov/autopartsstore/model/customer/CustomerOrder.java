@@ -1,6 +1,8 @@
 package ua.kriuchkov.autopartsstore.model.customer;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import ua.kriuchkov.autopartsstore.model.Catalogue;
 
 import javax.persistence.*;
@@ -15,6 +17,8 @@ public class CustomerOrder {
     @Column(name = "customer_order_id")
     private Integer id;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne
     @JoinColumn(name = "sku_id")
     private Catalogue catalogue;
@@ -25,6 +29,8 @@ public class CustomerOrder {
     @Column(name = "defected_sku_amount")
     private Integer defectedSkuAmount;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne
     @JoinColumn(name = "customer_order_status_id")
     private CustomerOrderStatus customerOrderStatus;

@@ -9,9 +9,9 @@
 <body>
 <div class="menu-container">
     <div class="menu">
-        <h1>Contracts</h1>
-        <div class="table-container" th:switch="${contracts}">
-            <h1 th:case="null">No contracts found!</h1>
+        <h1>Catalogue</h1>
+        <div class="table-container" th:switch="${catalogues}">
+            <h1 th:case="null">No SKU found!</h1>
             <div th:case="*">
                 <table class="entityTable">
                     <thead>
@@ -20,7 +20,6 @@
                         <th>Good</th>
                         <th>Supplier</th>
                         <th>Supplier category</th>
-                        <th>Supplier</th>
                         <th>Supplier price</th>
                         <th>Store price</th>
                         <th>Delivery days</th>
@@ -29,15 +28,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="contract : ${catalogues}">
-                        <td th:text="${catalogues.id}"></td>
-                        <td th:text="${catalogues.id}"></td>
-                        <td th:text="${catalogues.id}"></td>
-                        <td th:text="${catalogues.id}"></td>
-                        <td th:text="${catalogues.id}"></td>
-                        <td th:text="${catalogues.id}"></td>
-                        <td th:text="${catalogues.id}"></td>
-                        <td th:text="${catalogues.id}"></td>
+                    <tr th:each="catalogue : ${catalogues}">
+                        <td th:text="${catalogue.id}"></td>
+                        <td th:text="${catalogue.good.name}"></td>
+                        <td th:text="${catalogue.supplier.name}"></td>
+                        <td th:text="${catalogue.supplier.supplierCategory.name}"></td>
+                        <td th:text="${catalogue.supplierPrice}"></td>
+                        <td th:text="${catalogue.storePrice}"></td>
+                        <td th:text="${catalogue.deliveryDays}"></td>
 <!--                        <td><a th:href="@{contract-update/{id}(id=${contract.id})}">Edit</a></td>-->
 <!--                        <td><a th:href="@{contract-delete/{id}(id=${contract.id})}">Delete</a></td>-->
                     </tr>
@@ -45,8 +43,8 @@
                 </table>
             </div>
         </div>
-        <a class="button-container" href="/contracts/contract-create"><input type="button" value="Create contract"></a>
-        <a class="button-container" href="/"><input type="button" value="Back"></a>
+<!--        <a class="button-container" href="/contracts/contract-create"><input type="button" value="Create SKU"></a>-->
+        <a class="button-container" href="/catalogue/catalogue_menu"><input type="button" value="Back"></a>
     </div>
 </div>
 </body>

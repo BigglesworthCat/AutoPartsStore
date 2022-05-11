@@ -9,9 +9,9 @@
 <body>
 <div class="menu-container">
     <div class="menu">
-        <h1>Contracts</h1>
-        <div class="table-container" th:switch="${storages}">
-            <h1 th:case="null">No contracts found!</h1>
+        <h1>Store orders</h1>
+        <div class="table-container" th:switch="${storeOrders}">
+            <h1 th:case="null">No orders found!</h1>
             <div th:case="*">
                 <table class="entityTable">
                     <thead>
@@ -22,20 +22,18 @@
                         <th>SKU amount</th>
                         <th>Order status</th>
                         <th>Order date</th>
-
                         <!--                        <th>Edit</th>-->
                         <!--                        <th>Delete</th>-->
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="contract : ${storeOrders}">
-                        <td th:text="${storeOrders.id}"></td>
-                        <td th:text="${storeOrders.id}"></td>
-                        <td th:text="${storeOrders.id}"></td>
-                        <td th:text="${storeOrders.id}"></td>
-                        <td th:text="${storeOrders.id}"></td>
-                        <td th:text="${storeOrders.id}"></td>
-
+                    <tr th:each="storeOrder : ${storeOrders}">
+                        <td th:text="${storeOrder.id}"></td>
+                        <td th:text="${storeOrder.catalogue.good.name}"></td>
+                        <td th:text="${storeOrder.catalogue.supplier.name}"></td>
+                        <td th:text="${storeOrder.skuAmount}"></td>
+                        <td th:text="${storeOrder.storeOrderStatus.name}"></td>
+                        <td th:text="${storeOrder.date}"></td>
                         <!--                        <td><a th:href="@{contract-update/{id}(id=${contract.id})}">Edit</a></td>-->
                         <!--                        <td><a th:href="@{contract-delete/{id}(id=${contract.id})}">Delete</a></td>-->
                     </tr>
@@ -43,8 +41,8 @@
                 </table>
             </div>
         </div>
-        <a class="button-container" href="/contracts/contract-create"><input type="button" value="Create contract"></a>
-        <a class="button-container" href="/"><input type="button" value="Back"></a>
+<!--        <a class="button-container" href="/contracts/contract-create"><input type="button" value="Create store order"></a>-->
+        <a class="button-container" href="/storage/storage_menu"><input type="button" value="Back"></a>
     </div>
 </div>
 </body>

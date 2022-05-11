@@ -1,6 +1,8 @@
 package ua.kriuchkov.autopartsstore.model.customer;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import ua.kriuchkov.autopartsstore.model.customer.CustomerOrder;
 
 import javax.persistence.*;
@@ -18,6 +20,8 @@ public class CustomerOrderStatus {
     @Column(name = "customer_order_status_name")
     private String name;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "customerOrderStatus")
     private Set<CustomerOrder> customerOrder;
 }

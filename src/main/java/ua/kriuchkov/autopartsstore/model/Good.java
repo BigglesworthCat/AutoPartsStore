@@ -1,6 +1,8 @@
 package ua.kriuchkov.autopartsstore.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -17,6 +19,8 @@ public class Good {
     @Column(name = "good_name")
     private String name;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "good")
     private Set<Catalogue> catalogue;
 }

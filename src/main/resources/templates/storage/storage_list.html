@@ -9,7 +9,7 @@
 <body>
 <div class="menu-container">
     <div class="menu">
-        <h1>Contracts</h1>
+        <h1>Storage</h1>
         <div class="table-container" th:switch="${storages}">
             <h1 th:case="null">No contracts found!</h1>
             <div th:case="*">
@@ -22,19 +22,18 @@
                         <th>SKU amount</th>
                         <th>Cell capacity</th>
                         <th>Replenishment date</th>
-
 <!--                        <th>Edit</th>-->
 <!--                        <th>Delete</th>-->
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="contract : ${storages}">
-                        <td th:text="${storages.id}"></td>
-                        <td th:text="${storages.id}"></td>
-                        <td th:text="${storages.id}"></td>
-                        <td th:text="${storages.id}"></td>
-                        <td th:text="${storages.id}"></td>
-                        <td th:text="${storages.id}"></td>
+                    <tr th:each="storage : ${storages}">
+                        <td th:text="${storage.id}"></td>
+                        <td th:text="${storage.catalogue.good.name}"></td>
+                        <td th:text="${storage.catalogue.supplier.name}"></td>
+                        <td th:text="${storage.skuAmount}"></td>
+                        <td th:text="${storage.capacity}"></td>
+                        <td th:text="${storage.replenishmentDate}"></td>
 <!--                        <td><a th:href="@{contract-update/{id}(id=${contract.id})}">Edit</a></td>-->
 <!--                        <td><a th:href="@{contract-delete/{id}(id=${contract.id})}">Delete</a></td>-->
                     </tr>
@@ -42,8 +41,7 @@
                 </table>
             </div>
         </div>
-        <a class="button-container" href="/contracts/contract-create"><input type="button" value="Create contract"></a>
-        <a class="button-container" href="/"><input type="button" value="Back"></a>
+        <a class="button-container" href="/storage/storage_menu"><input type="button" value="Back"></a>
     </div>
 </div>
 </body>
