@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistics table</title>
+    <link rel="stylesheet" th:href="@{/css/page.css}"/>
+    <link rel="stylesheet" th:href="@{/css/table.css}"/>
+</head>
+<body>
+<div class="menu-container">
+    <div class="menu">
+        <h1>Statistics table</h1>
+        <div class="table-container" th:switch="${result}">
+            <h1 th:case="null">No rows found!</h1>
+            <div th:case="*">
+                <table class="entityTable">
+                    <thead>
+                    <tr>
+                        <th th:each="attribute : ${attributes}" th:text="${attribute}"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="resItem : ${result}">
+                        <td th:each="item : ${resItem}" th:text="${item}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>Total items: <span th:text="${count}"></span></p>
+            </div>
+        </div>
+        <div class="table-container" th:switch="${totalResult}">
+            <div th:case="*">
+                <table class="entityTable">
+                    <thead>
+                    <tr>
+                        <th th:each="attribute : ${totalAttributes}" th:text="${attribute}"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="totalResItem : ${totalResult}">
+                        <td th:each="item : ${totalResItem}" th:text="${item}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <a class="button-container" href="/statistics/statistics_menu"><input type="button" value="Back"></a>
+    </div>
+</div>
+</body>
+</html>

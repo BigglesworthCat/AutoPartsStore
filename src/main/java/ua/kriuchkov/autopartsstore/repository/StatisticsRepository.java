@@ -131,11 +131,8 @@ public class StatisticsRepository {
         return result;
     }
 
-    public List<Object[]> totalDefectedSKUs() {
-        List<Object[]> result = jdbcTemplate.queryForList("CALL total_defected_sku();")
-                .stream()
-                .map(row -> row.values().toArray())
-                .collect(Collectors.toList());
+    public List<Integer> totalDefectedSKUs() {
+        List<Integer> result = jdbcTemplate.queryForList("CALL total_defected_sku();", Integer.class);
         return result;
     }
 
