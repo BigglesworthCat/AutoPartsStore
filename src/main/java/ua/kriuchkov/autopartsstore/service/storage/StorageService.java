@@ -2,9 +2,7 @@ package ua.kriuchkov.autopartsstore.service.storage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.kriuchkov.autopartsstore.model.customer.CustomerOrderStatus;
 import ua.kriuchkov.autopartsstore.model.storage.Storage;
-import ua.kriuchkov.autopartsstore.repository.customer.CustomerOrderStatusRepository;
 import ua.kriuchkov.autopartsstore.repository.storage.StorageRepository;
 
 import java.util.List;

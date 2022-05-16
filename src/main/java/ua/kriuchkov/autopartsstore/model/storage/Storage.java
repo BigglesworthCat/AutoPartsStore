@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import ua.kriuchkov.autopartsstore.model.Catalogue;
-import ua.kriuchkov.autopartsstore.model.store.StoreOrderStatus;
 
 import javax.persistence.*;
 import java.sql.Date;

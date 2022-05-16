@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ua.kriuchkov.autopartsstore.repository.StatisticsRepository;
 
 import java.sql.Date;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller

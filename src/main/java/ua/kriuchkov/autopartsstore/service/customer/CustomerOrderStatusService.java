@@ -2,9 +2,7 @@ package ua.kriuchkov.autopartsstore.service.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.kriuchkov.autopartsstore.model.customer.CustomerOrder;
 import ua.kriuchkov.autopartsstore.model.customer.CustomerOrderStatus;
-import ua.kriuchkov.autopartsstore.repository.customer.CustomerOrderRepository;
 import ua.kriuchkov.autopartsstore.repository.customer.CustomerOrderStatusRepository;
 
 import java.util.List;

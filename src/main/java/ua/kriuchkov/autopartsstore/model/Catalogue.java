@@ -9,7 +9,6 @@ import ua.kriuchkov.autopartsstore.model.store.StoreOrder;
 import ua.kriuchkov.autopartsstore.model.supplier.Supplier;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.Set;
 
 @Data

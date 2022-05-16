@@ -3,9 +3,7 @@ package ua.kriuchkov.autopartsstore.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.kriuchkov.autopartsstore.model.Catalogue;
-import ua.kriuchkov.autopartsstore.model.store.StoreOrder;
 import ua.kriuchkov.autopartsstore.repository.CatalogueRepository;
-import ua.kriuchkov.autopartsstore.repository.store.StoreOrderRepository;
 
 import java.util.List;
 

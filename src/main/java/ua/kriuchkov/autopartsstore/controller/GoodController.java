@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ua.kriuchkov.autopartsstore.model.Catalogue;
 import ua.kriuchkov.autopartsstore.model.Good;
-import ua.kriuchkov.autopartsstore.service.CatalogueService;
 import ua.kriuchkov.autopartsstore.service.GoodService;
 
 import java.util.List;

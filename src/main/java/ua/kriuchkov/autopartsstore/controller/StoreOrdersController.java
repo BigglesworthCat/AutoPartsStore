@@ -1,6 +1,5 @@
 package ua.kriuchkov.autopartsstore.controller;
 
-import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,12 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.kriuchkov.autopartsstore.model.Catalogue;
-import ua.kriuchkov.autopartsstore.model.Good;
-import ua.kriuchkov.autopartsstore.model.storage.Storage;
 import ua.kriuchkov.autopartsstore.model.store.StoreOrder;
 import ua.kriuchkov.autopartsstore.model.store.StoreOrderStatus;
-import ua.kriuchkov.autopartsstore.model.supplier.Supplier;
-import ua.kriuchkov.autopartsstore.repository.store.StoreOrderRepository;
 import ua.kriuchkov.autopartsstore.service.CatalogueService;
 import ua.kriuchkov.autopartsstore.service.store.StoreOrderService;
 import ua.kriuchkov.autopartsstore.service.store.StoreOrderStatusService;

@@ -3,7 +3,6 @@ package ua.kriuchkov.autopartsstore.model.supplier;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import ua.kriuchkov.autopartsstore.model.supplier.Supplier;
 
 import javax.persistence.*;
 import java.util.Set;
