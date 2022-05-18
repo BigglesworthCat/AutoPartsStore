@@ -199,9 +199,11 @@ public class StatisticsController {
     }
 
     @GetMapping("/10")
-    public String suppliersByDefectedSKUs(Model model) {
-        var result = statisticsRepository.suppliersByDefectedSKUs();
-        Integer count = statisticsRepository.totalDefectedSKUs().get(0);
+    public String suppliersByDefectedSKUs(Model model,
+                                          @RequestParam(required = false) String sinceDate,
+                                          @RequestParam(required = false) String untilDate) {
+        var result = statisticsRepository.suppliersByDefectedSKUs(Date.valueOf(sinceDate), Date.valueOf(untilDate));
+        var count = statisticsRepository.totalDefectedSKUs(Date.valueOf(sinceDate), Date.valueOf(untilDate)).get(0)[0];
 
         List<String> attributes = List.of("Good", "Supplier", "Defected units");
         model.addAttribute("attributes", attributes);

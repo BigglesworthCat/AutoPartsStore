@@ -123,16 +123,19 @@ public class StatisticsRepository {
     }
 
     // Task 10
-    public List<Object[]> suppliersByDefectedSKUs() {
-        List<Object[]> result = jdbcTemplate.queryForList("CALL suppliers_by_defected_sku();")
+    public List<Object[]> suppliersByDefectedSKUs(Date sinceDate, Date untilDate) {
+        List<Object[]> result = jdbcTemplate.queryForList("CALL suppliers_by_defected_sku(?, ?);", sinceDate, untilDate)
                 .stream()
                 .map(row -> row.values().toArray())
                 .collect(Collectors.toList());
         return result;
     }
 
-    public List<Integer> totalDefectedSKUs() {
-        List<Integer> result = jdbcTemplate.queryForList("CALL total_defected_sku();", Integer.class);
+    public List<Object[]> totalDefectedSKUs(Date sinceDate, Date untilDate) {
+        List<Object[]> result = jdbcTemplate.queryForList("CALL total_defected_sku(?, ?);", sinceDate, untilDate)
+                .stream()
+                .map(row -> row.values().toArray())
+                .collect(Collectors.toList());
         return result;
     }
 
